@@ -43,29 +43,22 @@ print()
 #---------------
 print('Метод золотого сечения')
 col_steps=0
-a1=a
-b1=b
-d=0
-c=0
+a1=a   #0
+b1=b   #Pi/4
+d=(math.sqrt(5)-1)*(b1-a1)/2+a1
+c=(3-math.sqrt(5))*(b1-a1)/2+a1
 while ((b1-a1)/2> E):
-    if c==0:
-        c=(3-math.sqrt(5))*(b1-a1)/2+a1
-        f_c = math.tan(c) - 2 * math.sin(c)
-        col_steps+=1
-    if d==0:
-        d=(math.sqrt(5)-1)*(b1-a1)/2+a1
-        f_d=math.tan(d)-2*math.sin(d)
-        col_steps += 1
-
+    col_steps += 1
+    f_c = math.tan(c) - 2 * math.sin(c)
+    f_d = math.tan(d) - 2 * math.sin(d)
     if f_c<=f_d:
         b1=d
         d=c
-        c=0
+        c=(3-math.sqrt(5))*(b1-a1)/2+a1
     else:
         a1=c
         c=d
-        d=0
-
+        d=(math.sqrt(5)-1)*(b1-a1)/2+a1
 
 print('точка минимума: x=',(b1+a1)/2)
 print('количество шагов:',col_steps)
